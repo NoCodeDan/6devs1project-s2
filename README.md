@@ -39,6 +39,25 @@ Keep notes short and skimmable, and update only your section. This keeps the han
 
 ---
 
+### Example Logs
+
+#### Dev #1 – [Name] – [Date]  
++ Created Supabase table: users  
+~ Updated homepage layout  
+ENV: NEXT_PUBLIC_SUPABASE_URL  
+⚠️ Login redirect is still broken  
+
+---
+
+#### Dev #2 – [Name] – [Date]  
++ Added Stripe integration  
+~ Cleaned up dashboard UI  
+- Removed old auth flow  
+ENV: STRIPE_TEST_KEY  
+⚠️ Mobile nav glitch on iOS Safari
+
+---
+
 ## 🧑‍💻 Dev Logs
 
 ### Dev #1 – Harry Roper – 07/01/2025  
@@ -77,3 +96,5 @@ Keep notes short and skimmable, and update only your section. This keeps the han
 - Update your dev log  
 - Note any new env vars  
 - Mention anything that broke or needs review
+
+---
