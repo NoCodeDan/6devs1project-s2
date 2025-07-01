@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Make sure to use cursor rule design.mdc if you are making any new components. Follow global styles and use global styles when possible.

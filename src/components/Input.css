@@ -1,0 +1,113 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 0.25rem;
+}
+
+.input-required {
+  color: var(--md-sys-color-error);
+  margin-left: 0.25rem;
+}
+
+.input {
+  border-radius: 8px;
+  border: 1px solid var(--md-sys-color-outline);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: inherit;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-surface);
+  box-shadow: 0 0 0 3px var(--md-primary-90);
+}
+
+.input::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Sizes */
+.input--small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.input--medium {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.input--large {
+  padding: 1rem 1.25rem;
+  font-size: 1.125rem;
+}
+
+/* Variants */
+.input--default {
+  /* Uses base styles */
+}
+
+.input--filled {
+  background-color: var(--md-sys-color-surface-variant);
+  border-color: transparent;
+}
+
+.input--filled:focus {
+  background-color: var(--md-sys-color-surface);
+  border-color: var(--md-sys-color-primary);
+}
+
+.input--outlined {
+  background-color: transparent;
+  border-color: var(--md-sys-color-outline);
+}
+
+.input--outlined:focus {
+  background-color: var(--md-sys-color-surface);
+}
+
+/* States */
+.input--error {
+  border-color: var(--md-sys-color-error);
+}
+
+.input--error:focus {
+  border-color: var(--md-sys-color-error);
+  box-shadow: 0 0 0 3px var(--md-error-90);
+}
+
+.input--full-width {
+  width: 100%;
+}
+
+/* Textarea specific */
+.textarea {
+  resize: vertical;
+  min-height: 4rem;
+  line-height: 1.5;
+}
+
+/* Helper and error text */
+.input-helper-text {
+  font-size: 0.75rem;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.input-error-text {
+  font-size: 0.75rem;
+  color: var(--md-sys-color-error);
+}
+
+/* Material Design 3 colors automatically handle light/dark themes */ 

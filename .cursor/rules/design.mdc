@@ -1,0 +1,51 @@
+---
+description: When designing a new component make sure to use these design rules
+globs: 
+alwaysApply: false
+---
+# Design System Guidelines
+
+## Color System
+- **Primary**: Use `bg-primary` and `text-primary` for main actions and key elements
+- **Surface levels**: Use `bg-surface-0` through `bg-surface-24` for layered components
+- **Text colors**: Always use semantic colors like `text-on-surface`, `text-on-primary`, etc.
+- **Borders**: Use `border-outline` or `border-outline-variant` for consistent borders
+
+## Typography
+- **Headlines**: Use `text-headline-large/medium/small` for section headers
+- **Titles**: Use `text-title-large/medium/small` for component titles
+- **Body**: Use `text-body-large/medium/small` for content text
+- **Labels**: Use `text-label-large/medium/small` for form labels and captions
+
+## Elevation & Shadows
+- **Shadows**: Use `shadow-elevation-1` through `shadow-elevation-24` 
+- **Surface elevation**: Combine surface colors with elevation shadows
+- **Interactive states**: Increase elevation on hover/focus
+
+## Spacing & Layout
+- **Consistent gaps**: Use standard spacing scale (4, 6, 8, 12, 16, 24)
+- **Component padding**: Use `p-4`, `p-6`, `p-8` for component containers
+- **Section spacing**: Use `py-24` for major sections, `py-12` for subsections
+
+## Component Structure
+- **Container pattern**: Outer container with padding, inner content with gaps
+- **State management**: Handle loading, error, disabled states consistently
+- **Accessibility**: Include proper ARIA labels and keyboard navigation
+
+## Interactive Elements
+- **Buttons**: Use defined button variants (primary, ghost, glow)
+- **Focus states**: Always include visible focus indicators
+- **Hover effects**: Subtle elevation or color changes
+- **Transitions**: Use `transition-all duration-200` for smooth animations
+
+## Form Components
+- **Input styling**: Use consistent border radius and padding
+- **Error states**: Show error with `text-error` and `border-error`
+- **Labels**: Always pair inputs with descriptive labels
+- **Helper text**: Provide guidance with `text-body-small text-on-surface-variant`
+
+## Cards & Containers
+- **Background**: Use `bg-surface` or elevation surfaces
+- **Borders**: Use `border-outline-variant` for subtle definition
+- **Radius**: Use `rounded-lg` (12px) for most components
+- **Shadows**: Apply appropriate elevation shadows

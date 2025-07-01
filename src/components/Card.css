@@ -1,0 +1,146 @@
+.card {
+  border-radius: 12px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface);
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+/* Padding variants */
+.card--padding-none {
+  padding: 0;
+}
+
+.card--padding-small {
+  padding: 1rem;
+}
+
+.card--padding-medium {
+  padding: 1.5rem;
+}
+
+.card--padding-large {
+  padding: 2rem;
+}
+
+/* Shadow variants using Material Design 3 elevation */
+.card--shadow-none {
+  box-shadow: none;
+}
+
+.card--shadow-small {
+  box-shadow: var(--md-sys-elevation-shadow-1);
+}
+
+.card--shadow-medium {
+  box-shadow: var(--md-sys-elevation-shadow-3);
+}
+
+.card--shadow-large {
+  box-shadow: var(--md-sys-elevation-shadow-8);
+}
+
+/* Card variants */
+.card--default {
+  /* Uses base styles */
+}
+
+.card--elevated {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.card--elevated:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card--outlined {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card--filled {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: transparent;
+}
+
+/* Card sections */
+.card__header {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card__header:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.card__body {
+  margin-bottom: 1rem;
+}
+
+.card__body:last-child {
+  margin-bottom: 0;
+}
+
+.card__footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card__footer:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* Gradient card variants */
+.card--gradient {
+  /* Styling handled by motion components in JSX */
+}
+
+.card--gradient-minimal {
+  /* Minimal gradient card styling handled by motion components in JSX */
+}
+
+/* Light theme adjustments */
+@media (prefers-color-scheme: light) {
+  .card {
+    border-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .card--elevated {
+    background-color: white;
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+  
+  .card--elevated:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .card--outlined {
+    background-color: transparent;
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .card--filled {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: transparent;
+  }
+  
+  .card__header {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .card__footer {
+    border-top-color: rgba(0, 0, 0, 0.1);
+  }
+} 

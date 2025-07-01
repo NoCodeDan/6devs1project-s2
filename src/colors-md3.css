@@ -1,0 +1,425 @@
+/* Material Design 3 Dark Mode Color Scheme */
+/* Generated from seed colors: Primary #8B5CF6 (Purple), Secondary #A78BFA, Tertiary #C084FC */
+
+:root {
+  /* ===== PRIMARY TONAL PALETTE (from #8B5CF6 - Purple) ===== */
+  --md-primary-0: #000000;
+  --md-primary-10: #1A0D2E;
+  --md-primary-20: #2E1A4A;
+  --md-primary-30: #432766;
+  --md-primary-40: #593583;
+  --md-primary-50: #7044A0;
+  --md-primary-60: #8B5CF6;
+  --md-primary-70: #A78BFA;
+  --md-primary-80: #C4B5FD;
+  --md-primary-90: #E0E7FF;
+  --md-primary-95: #F0F4FF;
+  --md-primary-98: #F8FAFF;
+  --md-primary-99: #FCFDFF;
+  --md-primary-100: #FFFFFF;
+
+  /* ===== SECONDARY TONAL PALETTE (from #A78BFA) ===== */
+  --md-secondary-0: #000000;
+  --md-secondary-10: #1C1329;
+  --md-secondary-20: #32284A;
+  --md-secondary-30: #493E66;
+  --md-secondary-40: #615583;
+  --md-secondary-50: #7A6DA1;
+  --md-secondary-60: #9485C0;
+  --md-secondary-70: #A78BFA;
+  --md-secondary-80: #C4B5FD;
+  --md-secondary-90: #E0E7FF;
+  --md-secondary-95: #F0F4FF;
+  --md-secondary-98: #F8FAFF;
+  --md-secondary-99: #FCFDFF;
+  --md-secondary-100: #FFFFFF;
+
+  /* ===== TERTIARY TONAL PALETTE (from #C084FC) ===== */
+  --md-tertiary-0: #000000;
+  --md-tertiary-10: #2A0845;
+  --md-tertiary-20: #4A1A66;
+  --md-tertiary-30: #6B2C87;
+  --md-tertiary-40: #8D3FA8;
+  --md-tertiary-50: #B054CA;
+  --md-tertiary-60: #C084FC;
+  --md-tertiary-70: #D8A7FF;
+  --md-tertiary-80: #E9C7FF;
+  --md-tertiary-90: #F5E6FF;
+  --md-tertiary-95: #FAF2FF;
+  --md-tertiary-98: #FDF8FF;
+  --md-tertiary-99: #FEFCFF;
+  --md-tertiary-100: #FFFFFF;
+
+  /* ===== NEUTRAL TONAL PALETTE ===== */
+  --md-neutral-0: #000000;
+  --md-neutral-10: #0F0F0F;
+  --md-neutral-20: #1A1A1A;
+  --md-neutral-30: #262626;
+  --md-neutral-40: #333333;
+  --md-neutral-50: #5A5A5A;
+  --md-neutral-60: #707070;
+  --md-neutral-70: #858585;
+  --md-neutral-80: #9B9B9B;
+  --md-neutral-90: #D4D4D4;
+  --md-neutral-95: #E8E8E8;
+  --md-neutral-98: #F7F7F7;
+  --md-neutral-99: #FCFCFC;
+  --md-neutral-100: #FFFFFF;
+
+  /* ===== NEUTRAL VARIANT TONAL PALETTE ===== */
+  --md-neutral-variant-0: #000000;
+  --md-neutral-variant-10: #141218;
+  --md-neutral-variant-20: #1F1D26;
+  --md-neutral-variant-30: #2B2833;
+  --md-neutral-variant-40: #383441;
+  --md-neutral-variant-50: #5A5560;
+  --md-neutral-variant-60: #706B78;
+  --md-neutral-variant-70: #868191;
+  --md-neutral-variant-80: #9D97AB;
+  --md-neutral-variant-90: #B9B3C6;
+  --md-neutral-variant-95: #D5CFE2;
+  --md-neutral-variant-98: #EDEAF0;
+  --md-neutral-variant-99: #F6F3F8;
+  --md-neutral-variant-100: #FFFFFF;
+
+  /* ===== ERROR TONAL PALETTE ===== */
+  --md-error-0: #000000;
+  --md-error-10: #410E0B;
+  --md-error-20: #601410;
+  --md-error-30: #8C1D18;
+  --md-error-40: #B3261E;
+  --md-error-50: #DC362E;
+  --md-error-60: #E46962;
+  --md-error-70: #EC928E;
+  --md-error-80: #F2B8B5;
+  --md-error-90: #F9DEDC;
+  --md-error-95: #FCEEEE;
+  --md-error-98: #FEF7F7;
+  --md-error-99: #FFFBF9;
+  --md-error-100: #FFFFFF;
+}
+
+/* ===== DARK THEME COLOR ROLES ===== */
+:root {
+  /* Primary */
+  --md-sys-color-primary: #A78BFA;
+  --md-sys-color-on-primary: var(--md-primary-10);
+  --md-sys-color-primary-container: var(--md-primary-30);
+  --md-sys-color-on-primary-container: var(--md-primary-90);
+
+  /* Secondary */
+  --md-sys-color-secondary: #9485C0;
+  --md-sys-color-on-secondary: var(--md-secondary-10);
+  --md-sys-color-secondary-container: var(--md-secondary-30);
+  --md-sys-color-on-secondary-container: var(--md-secondary-90);
+
+  /* Tertiary */
+  --md-sys-color-tertiary: #C084FC;
+  --md-sys-color-on-tertiary: var(--md-tertiary-10);
+  --md-sys-color-tertiary-container: var(--md-tertiary-30);
+  --md-sys-color-on-tertiary-container: var(--md-tertiary-90);
+
+  /* Error */
+  --md-sys-color-error: var(--md-error-80);
+  --md-sys-color-on-error: var(--md-error-20);
+  --md-sys-color-error-container: var(--md-error-30);
+  --md-sys-color-on-error-container: var(--md-error-90);
+
+  /* Background & Surface */
+  --md-sys-color-background: var(--md-neutral-0);
+  --md-sys-color-on-background: var(--md-neutral-90);
+  --md-sys-color-surface: var(--md-neutral-0);
+  --md-sys-color-on-surface: var(--md-neutral-90);
+  --md-sys-color-surface-variant: var(--md-neutral-variant-30);
+  --md-sys-color-on-surface-variant: var(--md-neutral-variant-80);
+
+  /* Outline */
+  --md-sys-color-outline: var(--md-neutral-variant-60);
+  --md-sys-color-outline-variant: var(--md-neutral-variant-30);
+
+  /* Surface Container */
+  --md-sys-color-surface-container-lowest: var(--md-neutral-0);
+  --md-sys-color-surface-container-low: var(--md-neutral-10);
+  --md-sys-color-surface-container: var(--md-neutral-20);
+  --md-sys-color-surface-container-high: var(--md-neutral-30);
+  --md-sys-color-surface-container-highest: var(--md-neutral-40);
+
+  /* Inverse */
+  --md-sys-color-inverse-surface: var(--md-neutral-90);
+  --md-sys-color-inverse-on-surface: var(--md-neutral-10);
+  --md-sys-color-inverse-primary: var(--md-primary-40);
+
+  /* Surface Tint */
+  --md-sys-color-surface-tint: var(--md-sys-color-primary);
+}
+
+/* ===== ELEVATION SURFACES WITH OVERLAYS ===== */
+:root {
+  /* Base surface (0dp) */
+  --md-sys-elevation-surface0: var(--md-neutral-0); /* #000000 */
+  
+  /* Surface elevations with purple-tinted overlays for dark mode */
+  --md-sys-elevation-surface1: #0A0A0F; /* 0dp + subtle purple tint */
+  --md-sys-elevation-surface2: #0F0F1A; /* 0dp + light purple tint */
+  --md-sys-elevation-surface3: #141420; /* 0dp + medium purple tint */
+  --md-sys-elevation-surface4: #191926; /* 0dp + stronger purple tint */
+  --md-sys-elevation-surface6: #1E1E2B; /* 0dp + elevated purple tint */
+  --md-sys-elevation-surface8: #232330; /* 0dp + high purple tint */
+  --md-sys-elevation-surface12: #282836; /* 0dp + very high purple tint */
+  --md-sys-elevation-surface16: #2D2D3B; /* 0dp + maximum purple tint */
+  --md-sys-elevation-surface24: #323240; /* 0dp + ultra purple tint */
+}
+
+/* ===== SHADOW DEFINITIONS ===== */
+:root {
+  /* Elevation shadows with purple tint */
+  --md-sys-elevation-shadow-1: 0px 1px 2px rgba(139, 92, 246, 0.2), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-shadow-2: 0px 1px 2px rgba(139, 92, 246, 0.2), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-shadow-3: 0px 1px 3px rgba(139, 92, 246, 0.2), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-shadow-4: 0px 2px 3px rgba(139, 92, 246, 0.2), 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-shadow-6: 0px 3px 5px rgba(139, 92, 246, 0.2), 0px 8px 12px 6px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-shadow-8: 0px 4px 6px rgba(139, 92, 246, 0.2), 0px 10px 14px 8px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-shadow-12: 0px 6px 10px rgba(139, 92, 246, 0.2), 0px 14px 18px 12px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-shadow-16: 0px 8px 12px rgba(139, 92, 246, 0.2), 0px 16px 20px 16px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-shadow-24: 0px 12px 16px rgba(139, 92, 246, 0.2), 0px 24px 24px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== TYPOGRAPHY SCALE ===== */
+:root {
+  /* Display */
+  --md-sys-typescale-display-large-font-size: 3.5rem;
+  --md-sys-typescale-display-large-line-height: 4rem;
+  --md-sys-typescale-display-large-font-weight: 300;
+  --md-sys-typescale-display-large-letter-spacing: -0.02em;
+
+  --md-sys-typescale-display-medium-font-size: 2.8125rem;
+  --md-sys-typescale-display-medium-line-height: 3.25rem;
+  --md-sys-typescale-display-medium-font-weight: 300;
+  --md-sys-typescale-display-medium-letter-spacing: -0.02em;
+
+  --md-sys-typescale-display-small-font-size: 2.25rem;
+  --md-sys-typescale-display-small-line-height: 2.75rem;
+  --md-sys-typescale-display-small-font-weight: 300;
+  --md-sys-typescale-display-small-letter-spacing: -0.01em;
+
+  /* Headlines */
+  --md-sys-typescale-headline-large-font-size: 2rem;
+  --md-sys-typescale-headline-large-line-height: 2.5rem;
+  --md-sys-typescale-headline-large-font-weight: 300;
+  --md-sys-typescale-headline-large-letter-spacing: 0;
+
+  --md-sys-typescale-headline-medium-font-size: 1.75rem;
+  --md-sys-typescale-headline-medium-line-height: 2.25rem;
+  --md-sys-typescale-headline-medium-font-weight: 300;
+  --md-sys-typescale-headline-medium-letter-spacing: 0;
+
+  --md-sys-typescale-headline-small-font-size: 1.5rem;
+  --md-sys-typescale-headline-small-line-height: 2rem;
+  --md-sys-typescale-headline-small-font-weight: 400;
+  --md-sys-typescale-headline-small-letter-spacing: 0;
+
+  /* Titles */
+  --md-sys-typescale-title-large-font-size: 1.375rem;
+  --md-sys-typescale-title-large-line-height: 1.75rem;
+  --md-sys-typescale-title-large-font-weight: 400;
+  --md-sys-typescale-title-large-letter-spacing: 0;
+
+  --md-sys-typescale-title-medium-font-size: 1rem;
+  --md-sys-typescale-title-medium-line-height: 1.5rem;
+  --md-sys-typescale-title-medium-font-weight: 500;
+  --md-sys-typescale-title-medium-letter-spacing: 0.009em;
+
+  --md-sys-typescale-title-small-font-size: 0.875rem;
+  --md-sys-typescale-title-small-line-height: 1.25rem;
+  --md-sys-typescale-title-small-font-weight: 500;
+  --md-sys-typescale-title-small-letter-spacing: 0.007em;
+
+  /* Body */
+  --md-sys-typescale-body-large-font-size: 1rem;
+  --md-sys-typescale-body-large-line-height: 1.5rem;
+  --md-sys-typescale-body-large-font-weight: 400;
+  --md-sys-typescale-body-large-letter-spacing: 0.009em;
+
+  --md-sys-typescale-body-medium-font-size: 0.875rem;
+  --md-sys-typescale-body-medium-line-height: 1.25rem;
+  --md-sys-typescale-body-medium-font-weight: 400;
+  --md-sys-typescale-body-medium-letter-spacing: 0.0178em;
+
+  --md-sys-typescale-body-small-font-size: 0.75rem;
+  --md-sys-typescale-body-small-line-height: 1rem;
+  --md-sys-typescale-body-small-font-weight: 400;
+  --md-sys-typescale-body-small-letter-spacing: 0.033em;
+
+  /* Label */
+  --md-sys-typescale-label-large-font-size: 0.875rem;
+  --md-sys-typescale-label-large-line-height: 1.25rem;
+  --md-sys-typescale-label-large-font-weight: 500;
+  --md-sys-typescale-label-large-letter-spacing: 0.007em;
+
+  --md-sys-typescale-label-medium-font-size: 0.75rem;
+  --md-sys-typescale-label-medium-line-height: 1rem;
+  --md-sys-typescale-label-medium-font-weight: 500;
+  --md-sys-typescale-label-medium-letter-spacing: 0.033em;
+
+  --md-sys-typescale-label-small-font-size: 0.6875rem;
+  --md-sys-typescale-label-small-line-height: 1rem;
+  --md-sys-typescale-label-small-font-weight: 500;
+  --md-sys-typescale-label-small-letter-spacing: 0.036em;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.surface-0 { background-color: var(--md-sys-elevation-surface0); }
+.surface-1 { background-color: var(--md-sys-elevation-surface1); }
+.surface-2 { background-color: var(--md-sys-elevation-surface2); }
+.surface-3 { background-color: var(--md-sys-elevation-surface3); }
+.surface-4 { background-color: var(--md-sys-elevation-surface4); }
+.surface-6 { background-color: var(--md-sys-elevation-surface6); }
+.surface-8 { background-color: var(--md-sys-elevation-surface8); }
+.surface-12 { background-color: var(--md-sys-elevation-surface12); }
+.surface-16 { background-color: var(--md-sys-elevation-surface16); }
+.surface-24 { background-color: var(--md-sys-elevation-surface24); }
+
+/* Elevation classes */
+.elevation-1 { box-shadow: var(--md-sys-elevation-shadow-1); }
+.elevation-2 { box-shadow: var(--md-sys-elevation-shadow-2); }
+.elevation-3 { box-shadow: var(--md-sys-elevation-shadow-3); }
+.elevation-4 { box-shadow: var(--md-sys-elevation-shadow-4); }
+.elevation-6 { box-shadow: var(--md-sys-elevation-shadow-6); }
+.elevation-8 { box-shadow: var(--md-sys-elevation-shadow-8); }
+.elevation-12 { box-shadow: var(--md-sys-elevation-shadow-12); }
+.elevation-16 { box-shadow: var(--md-sys-elevation-shadow-16); }
+.elevation-24 { box-shadow: var(--md-sys-elevation-shadow-24); }
+
+/* Text color utilities */
+.text-primary { color: var(--md-sys-color-primary); }
+.text-on-primary { color: var(--md-sys-color-on-primary); }
+.text-secondary { color: var(--md-sys-color-secondary); }
+.text-on-secondary { color: var(--md-sys-color-on-secondary); }
+.text-tertiary { color: var(--md-sys-color-tertiary); }
+.text-on-tertiary { color: var(--md-sys-color-on-tertiary); }
+.text-on-surface { color: var(--md-sys-color-on-surface); }
+.text-on-background { color: var(--md-sys-color-on-background); }
+.text-on-surface-variant { color: var(--md-sys-color-on-surface-variant); }
+
+/* Background color utilities */
+.bg-primary { background-color: var(--md-sys-color-primary); }
+.bg-primary-container { background-color: var(--md-sys-color-primary-container); }
+.bg-secondary { background-color: var(--md-sys-color-secondary); }
+.bg-secondary-container { background-color: var(--md-sys-color-secondary-container); }
+.bg-tertiary { background-color: var(--md-sys-color-tertiary); }
+.bg-tertiary-container { background-color: var(--md-sys-color-tertiary-container); }
+.bg-surface { background-color: var(--md-sys-color-surface); }
+.bg-surface-variant { background-color: var(--md-sys-color-surface-variant); }
+.bg-background { background-color: var(--md-sys-color-background); }
+.bg-error { background-color: var(--md-sys-color-error); }
+.bg-on-error { color: var(--md-sys-color-on-error); }
+
+/* Border color utilities */
+.border-outline { border-color: var(--md-sys-color-outline); }
+.border-outline-variant { border-color: var(--md-sys-color-outline-variant); }
+
+/* Typography utilities */
+.display-large {
+  font-size: var(--md-sys-typescale-display-large-font-size);
+  line-height: var(--md-sys-typescale-display-large-line-height);
+  font-weight: var(--md-sys-typescale-display-large-font-weight);
+  letter-spacing: var(--md-sys-typescale-display-large-letter-spacing);
+}
+
+.display-medium {
+  font-size: var(--md-sys-typescale-display-medium-font-size);
+  line-height: var(--md-sys-typescale-display-medium-line-height);
+  font-weight: var(--md-sys-typescale-display-medium-font-weight);
+  letter-spacing: var(--md-sys-typescale-display-medium-letter-spacing);
+}
+
+.display-small {
+  font-size: var(--md-sys-typescale-display-small-font-size);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+  font-weight: var(--md-sys-typescale-display-small-font-weight);
+  letter-spacing: var(--md-sys-typescale-display-small-letter-spacing);
+}
+
+.headline-large {
+  font-size: var(--md-sys-typescale-headline-large-font-size);
+  line-height: var(--md-sys-typescale-headline-large-line-height);
+  font-weight: var(--md-sys-typescale-headline-large-font-weight);
+  letter-spacing: var(--md-sys-typescale-headline-large-letter-spacing);
+}
+
+.headline-medium {
+  font-size: var(--md-sys-typescale-headline-medium-font-size);
+  line-height: var(--md-sys-typescale-headline-medium-line-height);
+  font-weight: var(--md-sys-typescale-headline-medium-font-weight);
+  letter-spacing: var(--md-sys-typescale-headline-medium-letter-spacing);
+}
+
+.headline-small {
+  font-size: var(--md-sys-typescale-headline-small-font-size);
+  line-height: var(--md-sys-typescale-headline-small-line-height);
+  font-weight: var(--md-sys-typescale-headline-small-font-weight);
+  letter-spacing: var(--md-sys-typescale-headline-small-letter-spacing);
+}
+
+.title-large {
+  font-size: var(--md-sys-typescale-title-large-font-size);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+  font-weight: var(--md-sys-typescale-title-large-font-weight);
+  letter-spacing: var(--md-sys-typescale-title-large-letter-spacing);
+}
+
+.title-medium {
+  font-size: var(--md-sys-typescale-title-medium-font-size);
+  line-height: var(--md-sys-typescale-title-medium-line-height);
+  font-weight: var(--md-sys-typescale-title-medium-font-weight);
+  letter-spacing: var(--md-sys-typescale-title-medium-letter-spacing);
+}
+
+.title-small {
+  font-size: var(--md-sys-typescale-title-small-font-size);
+  line-height: var(--md-sys-typescale-title-small-line-height);
+  font-weight: var(--md-sys-typescale-title-small-font-weight);
+  letter-spacing: var(--md-sys-typescale-title-small-letter-spacing);
+}
+
+.body-large {
+  font-size: var(--md-sys-typescale-body-large-font-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  font-weight: var(--md-sys-typescale-body-large-font-weight);
+  letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+}
+
+.body-medium {
+  font-size: var(--md-sys-typescale-body-medium-font-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  font-weight: var(--md-sys-typescale-body-medium-font-weight);
+  letter-spacing: var(--md-sys-typescale-body-medium-letter-spacing);
+}
+
+.body-small {
+  font-size: var(--md-sys-typescale-body-small-font-size);
+  line-height: var(--md-sys-typescale-body-small-line-height);
+  font-weight: var(--md-sys-typescale-body-small-font-weight);
+  letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+}
+
+.label-large {
+  font-size: var(--md-sys-typescale-label-large-font-size);
+  line-height: var(--md-sys-typescale-label-large-line-height);
+  font-weight: var(--md-sys-typescale-label-large-font-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-letter-spacing);
+}
+
+.label-medium {
+  font-size: var(--md-sys-typescale-label-medium-font-size);
+  line-height: var(--md-sys-typescale-label-medium-line-height);
+  font-weight: var(--md-sys-typescale-label-medium-font-weight);
+  letter-spacing: var(--md-sys-typescale-label-medium-letter-spacing);
+}
+
+.label-small {
+  font-size: var(--md-sys-typescale-label-small-font-size);
+  line-height: var(--md-sys-typescale-label-small-line-height);
+  font-weight: var(--md-sys-typescale-label-small-font-weight);
+  letter-spacing: var(--md-sys-typescale-label-small-letter-spacing);
+} 

@@ -1,0 +1,206 @@
+@import "tailwindcss";
+@import "./colors-md3.css";
+
+/* Custom base styles to work with our design system */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-variation-settings: normal;
+  }
+  
+  body {
+    font-family: inherit;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Override Tailwind's text utilities with our Material Design 3 typography scale */
+@layer utilities {
+  .text-display-large {
+    font-size: var(--md-sys-typescale-display-large-font-size) !important;
+    line-height: var(--md-sys-typescale-display-large-line-height) !important;
+    font-weight: var(--md-sys-typescale-display-large-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-display-large-letter-spacing) !important;
+  }
+
+  .text-display-medium {
+    font-size: var(--md-sys-typescale-display-medium-font-size) !important;
+    line-height: var(--md-sys-typescale-display-medium-line-height) !important;
+    font-weight: var(--md-sys-typescale-display-medium-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-display-medium-letter-spacing) !important;
+  }
+
+  .text-display-small {
+    font-size: var(--md-sys-typescale-display-small-font-size) !important;
+    line-height: var(--md-sys-typescale-display-small-line-height) !important;
+    font-weight: var(--md-sys-typescale-display-small-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-display-small-letter-spacing) !important;
+  }
+
+  .text-headline-large {
+    font-size: var(--md-sys-typescale-headline-large-font-size) !important;
+    line-height: var(--md-sys-typescale-headline-large-line-height) !important;
+    font-weight: var(--md-sys-typescale-headline-large-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-headline-large-letter-spacing) !important;
+  }
+
+  .text-headline-medium {
+    font-size: var(--md-sys-typescale-headline-medium-font-size) !important;
+    line-height: var(--md-sys-typescale-headline-medium-line-height) !important;
+    font-weight: var(--md-sys-typescale-headline-medium-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-headline-medium-letter-spacing) !important;
+  }
+
+  .text-headline-small {
+    font-size: var(--md-sys-typescale-headline-small-font-size) !important;
+    line-height: var(--md-sys-typescale-headline-small-line-height) !important;
+    font-weight: var(--md-sys-typescale-headline-small-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-headline-small-letter-spacing) !important;
+  }
+
+  .text-title-large {
+    font-size: var(--md-sys-typescale-title-large-font-size) !important;
+    line-height: var(--md-sys-typescale-title-large-line-height) !important;
+    font-weight: var(--md-sys-typescale-title-large-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-title-large-letter-spacing) !important;
+  }
+
+  .text-title-medium {
+    font-size: var(--md-sys-typescale-title-medium-font-size) !important;
+    line-height: var(--md-sys-typescale-title-medium-line-height) !important;
+    font-weight: var(--md-sys-typescale-title-medium-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-title-medium-letter-spacing) !important;
+  }
+
+  .text-title-small {
+    font-size: var(--md-sys-typescale-title-small-font-size) !important;
+    line-height: var(--md-sys-typescale-title-small-line-height) !important;
+    font-weight: var(--md-sys-typescale-title-small-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-title-small-letter-spacing) !important;
+  }
+
+  .text-body-large {
+    font-size: var(--md-sys-typescale-body-large-font-size) !important;
+    line-height: var(--md-sys-typescale-body-large-line-height) !important;
+    font-weight: var(--md-sys-typescale-body-large-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing) !important;
+  }
+
+  .text-body-medium {
+    font-size: var(--md-sys-typescale-body-medium-font-size) !important;
+    line-height: var(--md-sys-typescale-body-medium-line-height) !important;
+    font-weight: var(--md-sys-typescale-body-medium-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-body-medium-letter-spacing) !important;
+  }
+
+  .text-body-small {
+    font-size: var(--md-sys-typescale-body-small-font-size) !important;
+    line-height: var(--md-sys-typescale-body-small-line-height) !important;
+    font-weight: var(--md-sys-typescale-body-small-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing) !important;
+  }
+
+  .text-label-large {
+    font-size: var(--md-sys-typescale-label-large-font-size) !important;
+    line-height: var(--md-sys-typescale-label-large-line-height) !important;
+    font-weight: var(--md-sys-typescale-label-large-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-label-large-letter-spacing) !important;
+  }
+
+  .text-label-medium {
+    font-size: var(--md-sys-typescale-label-medium-font-size) !important;
+    line-height: var(--md-sys-typescale-label-medium-line-height) !important;
+    font-weight: var(--md-sys-typescale-label-medium-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-label-medium-letter-spacing) !important;
+  }
+
+  .text-label-small {
+    font-size: var(--md-sys-typescale-label-small-font-size) !important;
+    line-height: var(--md-sys-typescale-label-small-line-height) !important;
+    font-weight: var(--md-sys-typescale-label-small-font-weight) !important;
+    letter-spacing: var(--md-sys-typescale-label-small-letter-spacing) !important;
+  }
+
+  /* Color utilities */
+  .text-on-surface {
+    color: var(--md-sys-color-on-surface) !important;
+  }
+
+  .text-on-surface-variant {
+    color: var(--md-sys-color-on-surface-variant) !important;
+  }
+
+  .text-primary {
+    color: var(--md-sys-color-primary) !important;
+  }
+
+  .text-on-primary {
+    color: var(--md-sys-color-on-primary) !important;
+  }
+
+  .text-secondary {
+    color: var(--md-sys-color-secondary) !important;
+  }
+
+  .text-on-secondary {
+    color: var(--md-sys-color-on-secondary) !important;
+  }
+
+  .text-tertiary {
+    color: var(--md-sys-color-tertiary) !important;
+  }
+
+  .text-on-tertiary {
+    color: var(--md-sys-color-on-tertiary) !important;
+  }
+
+  .text-error {
+    color: var(--md-sys-color-error) !important;
+  }
+
+  .text-on-error {
+    color: var(--md-sys-color-on-error) !important;
+  }
+
+  /* Background utilities */
+  .bg-background {
+    background-color: var(--md-sys-color-background) !important;
+  }
+
+  .bg-surface {
+    background-color: var(--md-sys-color-surface) !important;
+  }
+
+  .bg-surface-variant {
+    background-color: var(--md-sys-color-surface-variant) !important;
+  }
+
+  .bg-primary {
+    background-color: var(--md-sys-color-primary) !important;
+  }
+
+  .bg-secondary {
+    background-color: var(--md-sys-color-secondary) !important;
+  }
+
+  .bg-tertiary {
+    background-color: var(--md-sys-color-tertiary) !important;
+  }
+
+  /* Border utilities */
+  .border-outline {
+    border-color: var(--md-sys-color-outline) !important;
+  }
+
+  .border-outline-variant {
+    border-color: var(--md-sys-color-outline-variant) !important;
+  }
+}
