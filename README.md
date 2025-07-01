@@ -9,8 +9,8 @@ Keep notes short and skimmable, and update only your section. This keeps the han
 
 - **GitHub Repo:** [INSERT LINK]  
 - **Hosting Provider/Staging link:** [INSERT LINK]  
-- **Idea List:**  
-- **Research:** [Figma, Notion, Docs, etc. – INSERT LINK]
+- **Idea List:** [https://docs.google.com/document/d/1FqR-ghBNKoazT7myHxoWZMD7bymyzotzxLSeGKmrPsI/edit?usp=sharing](https://docs.google.com/document/d/1FqR-ghBNKoazT7myHxoWZMD7bymyzotzxLSeGKmrPsI/edit?usp=sharing)  
+- **Research:** [https://docs.google.com/document/d/1VImANDWLg5SSYFGdQt7hcKneFPVXj6hcuVWGHZQbmGM/edit?usp=sharing](https://docs.google.com/document/d/1VImANDWLg5SSYFGdQt7hcKneFPVXj6hcuVWGHZQbmGM/edit?usp=sharing)
 
 ---
 
@@ -37,23 +37,19 @@ Keep notes short and skimmable, and update only your section. This keeps the han
     ⚠️ [Anything broken or confusing]  
     ```
 
----
-
 ### Example Logs
 
 #### Dev #1 – [Name] – [Date]  
 + Created Supabase table: users  
 ~ Updated homepage layout  
-ENV: NEXT_PUBLIC_SUPABASE_URL  
++ Added ENV: NEXT_PUBLIC_SUPABASE_URL  
 ⚠️ Login redirect is still broken  
 
----
-
 #### Dev #2 – [Name] – [Date]  
-+ Added Stripe integration  
+- Updated Research doc with user personas and marketing research  
 ~ Cleaned up dashboard UI  
 - Removed old auth flow  
-ENV: STRIPE_TEST_KEY  
++ Added ENV: STRIPE_TEST_KEY  
 ⚠️ Mobile nav glitch on iOS Safari
 
 ---
