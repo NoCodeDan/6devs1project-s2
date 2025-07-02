@@ -86,9 +86,25 @@ Missing:
 
 ---
 
-### Dev #2 – [Name] – 07/02/2025
+### Dev #2 – Albert – 07/02/2025
 
-[Add your notes here]
++ Complete Spotify Web API integration with OAuth PKCE flow
++ Added comprehensive Spotify service with token management
++ Created SpotifyConnect component with beautiful UI following design system
++ Added SpotifyCallback component for OAuth redirect handling
++ Created Dashboard component with event recommendations layout
++ Added axios and crypto-js dependencies for API calls and PKCE
++ Updated App.jsx with new routes for dashboard and callback
++ Created env.example with Spotify configuration template
+
+~ Updated package.json with new dependencies
+~ Updated README with dev log entry
+
+ENV: VITE_SPOTIFY_CLIENT_ID (required), VITE_SPOTIFY_REDIRECT_URI (optional, defaults to localhost:5173/callback)
+
+⚠️ Need to create Spotify app in developer dashboard and get client ID
+⚠️ Event recommendation algorithm still needs to be implemented
+⚠️ Need to integrate with actual event APIs (Ticketmaster, Eventbrite, etc.)
 
 ---
 
