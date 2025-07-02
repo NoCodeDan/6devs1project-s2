@@ -105,7 +105,8 @@ ENV: VITE_SPOTIFY_CLIENT_ID (required), VITE_SPOTIFY_REDIRECT_URI (optional, def
 ⚠️ Need to create Spotify app in developer dashboard and get client ID
 ⚠️ Event recommendation algorithm still needs to be implemented
 ⚠️ Need to integrate with actual event APIs (Ticketmaster, Eventbrite, etc.)
-
+Spotify index api https://developer.spotify.com/documentation/web-api/concepts/authorization
+ngrok for redirect url, use 11labs voice for interactive experience
 ---
 
 ### Dev #3 – [Name] – 07/03/2025
