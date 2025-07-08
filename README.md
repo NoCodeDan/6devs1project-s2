@@ -157,7 +157,7 @@ ngrok for redirect url, use 11labs voice for interactive experience
 4. Use npm run dev to run the project then go to http://localhost:5173/landing 
 5. You might want to remove the "Connect with Instagram" button since I don't think you'll want to go through the process of sending the app for review with Meta in order to be able to connect with instagram. 
 6. Click on "Connect Spotify" to connect your spotify account.
-7. Go to the http://localhost:5173/spotify page and fix the errors to properly retrieve the user's Spotify data
+7. Open the console then go to the http://localhost:5173/spotify page and fix the errors to properly retrieve the user's Spotify data
 8. Feed the results from that to the AI to get event recommendations. I've got Gemini setup at http://localhost:5173/ai as a reference but you can use OpenAI or anything else.
 9. Look into Evenbrite alternatives since we can't search events through Eventbrite's API. So maybe get Ticketmaster working, maybe use LinkedIn events or Meetup, so you can feed the AI's recommendations into this API's event search.
 10. We wouldn't actually direct users to the /spotify or /ai pages, this is just for testing to ensure their features are functional. After a user connects their Spotify account from the landing page, they should be redirected to /onboarding. So you'll have to modify this /onboarding page's sample info to display their actual retrieved info and event recommendations.
