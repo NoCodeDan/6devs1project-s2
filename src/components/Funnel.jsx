@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import QuestionScreen from './QuestionScreen';
+import CompletionScreen from './question-screen/CompletionScreen';
 
 const steps = [
   {
@@ -56,11 +57,14 @@ const steps = [
   },
 ];
 
+
+
 const Funnel = ({ onComplete }) => {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [selected, setSelected] = useState('');
   const [inputValue, setInputValue] = useState('');
+  const [completed, setCompleted] = useState(false);
 
   const current = steps[step];
 
@@ -81,6 +85,7 @@ const Funnel = ({ onComplete }) => {
     if (step < steps.length - 1) {
       setStep(step + 1);
     } else {
+      setCompleted(true);
       onComplete && onComplete(newAnswers);
     }
   };
@@ -91,7 +96,12 @@ const Funnel = ({ onComplete }) => {
   };
 
   const nextDisabled =
-    current.inputType === 'text' ? !inputValue.trim() : !selected;
+    current?.inputType === 'text' ? !inputValue.trim() : !selected;
+
+  // Show completion screen if finished
+  if (completed) {
+    return <CompletionScreen />;
+  }
 
   return (
     <QuestionScreen

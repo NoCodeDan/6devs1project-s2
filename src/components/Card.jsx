@@ -46,7 +46,7 @@ export default function Card({
 
   // If variant is not gradient, use the original simple card design
   if (variant !== 'gradient') {
-    const baseClasses = 'rounded-xl border transition-all duration-200 box-border backdrop-blur-md'
+    const baseClasses = 'rounded-xl border transition-all duration-200 box-border backdrop-blur-md w-full h-full'
     
     const paddingClasses = {
       none: 'p-0',
@@ -66,7 +66,8 @@ export default function Card({
       default: 'border-white/10 bg-white/5 dark:border-white/10 dark:bg-white/5',
       elevated: 'border-white/15 bg-white/8 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 dark:border-white/15 dark:bg-white/8 dark:hover:bg-white/10',
       outlined: 'bg-transparent border-white/20 dark:border-white/20',
-      filled: 'bg-white/10 border-transparent dark:bg-white/10'
+      filled: 'bg-white/10 border-transparent dark:bg-white/10',
+      glass: 'bg-white/5 border-white/10 backdrop-blur-md'
     }
     
     const cardClasses = [
@@ -90,8 +91,10 @@ export default function Card({
       ref={cardRef}
       className={`relative rounded-[32px] overflow-hidden ${className}`}
       style={{
-        width: "360px",
-        height: minimal ? "320px" : "450px",
+        width: "100%",
+        maxWidth: "360px",
+        minWidth: "280px",
+        height: minimal ? "280px" : "400px",
         transformStyle: "preserve-3d",
         backgroundColor: "#0e131f",
         boxShadow: minimal 

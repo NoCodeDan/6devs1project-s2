@@ -109,9 +109,27 @@ Spotify index api https://developer.spotify.com/documentation/web-api/concepts/a
 ngrok for redirect url, use 11labs voice for interactive experience
 ---
 
-### Dev #3 – [Name] – 07/03/2025
+### Dev #3 – Leonel – 07/05/2025
 
-[Add your notes here]
++ Added Ubuntu fonts to public/fonts/ directory and integrated throughout UI
++ Enhanced landing page components with improved glassmorphism effects and animations
++ Implemented GSAP and @gsap/react for smooth page transitions and micro-interactions
++ Added background music context with toggle functionality in landing page
++ Created CompletionScreen component with success state for funnel completion
++ Added completion state management to Funnel.jsx with proper flow handling
++ Separated CompletionScreen into dedicated /question-screen folder for better organization
++ Enhanced QuestionScreen.jsx with premium styling following brand guidelines
++ Implemented magnetic button effects and smooth hover animations throughout funnel
++ Integrated Lenis smooth scrolling library for premium inertia-based scrolling experience
+
+~ Updated Funnel.jsx to handle completion state and prevent blank screen issues
+~ Enhanced UI/UX consistency across landing and funnel pages
+~ Improved component structure and organization
+~ Replaced basic CSS scroll-behavior with Lenis for smooth momentum scrolling
+
+⚠️ Funnel now requires GSAP and @gsap/react dependencies for animations
+⚠️ CompletionScreen expects onComplete callback to be handled by parent component
+⚠️ Lenis smooth scrolling is now active app-wide - use data-lenis-prevent attribute for nested scroll containers
 
 ---
 

@@ -13,7 +13,7 @@ export default function Button({
 }) {
   const buttonRef = useRef(null)
 
-  const baseClasses = 'inline-flex items-center justify-center rounded-lg border font-medium transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2'
+  const baseClasses = 'inline-flex items-center justify-center rounded-full border font-medium transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2'
   
   const sizeClasses = {
     small: 'px-3 py-1.5 text-sm',
@@ -22,7 +22,7 @@ export default function Button({
   }
   
   const variantClasses = {
-    primary: 'bg-primary text-on-primary border-primary hover:bg-primary/90 focus:ring-primary/50',
+    primary: 'bg-white text-black border-white hover:bg-gray-100 focus:ring-white/50',
     secondary: 'bg-secondary-container text-on-secondary-container border-secondary hover:bg-secondary hover:text-on-secondary focus:ring-secondary/50',
     outline: 'bg-transparent text-on-surface border-outline hover:bg-surface-variant hover:text-on-surface-variant focus:ring-primary/50',
     ghost: 'bg-transparent text-on-surface border-transparent hover:bg-surface-variant focus:ring-primary/50',
