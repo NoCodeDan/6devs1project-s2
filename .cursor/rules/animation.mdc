@@ -1,0 +1,82 @@
+---
+alwaysApply: true
+---
+
+# Animation Guidelines
+
+## Core Animation Library
+ALWAYS use GSAP and the useGSAP() hook for all animations and transitions. This ensures consistency, performance, and maintainability across the application.
+
+## Animation Principles
+
+### 1. **Smooth & Polished**
+- Use `ease: "power2.out"` for most entrance animations
+- Use `ease: "power2.inOut"` for hover states and interactive elements
+- Duration should typically be between 0.4s - 0.8s for most UI elements
+- Avoid jarring or abrupt transitions
+
+### 2. **Purposeful Impact**
+- Animations should enhance user experience, not distract from it
+- Use subtle micro-interactions to provide feedback (button hovers, form focus states)
+- Entrance animations should feel cohesive - elements should flow together naturally
+- Consider staggering related elements with small delays (0.1s - 0.2s max)
+
+### 3. **Performance Optimized**
+- Animate `opacity`, `transform` properties (x, y, scale, rotate) for best performance
+- Avoid animating `width`, `height`, `top`, `left` directly
+- Use `gsap.set()` for initial states to prevent flashing
+- Implement proper cleanup in useGSAP dependencies
+
+### 4. **Consistent Patterns**
+- **Page Transitions**: Unified fade with slight Y movement (`opacity: 0 → 1`, `y: 20 → 0`)
+- **Button Interactions**: Subtle scale and glow effects on hover
+- **Card Animations**: Gentle lift with shadow enhancement
+- **Form Elements**: Smooth focus states with border/glow transitions
+
+## Code Examples
+
+### Basic Entrance Animation
+```jsx
+useGSAP(() => {
+  gsap.fromTo(elementRef.current, 
+    { opacity: 0, y: 20 }, 
+    { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
+  );
+}, []);
+```
+
+### Staggered Elements
+```jsx
+useGSAP(() => {
+  gsap.fromTo(".stagger-item", 
+    { opacity: 0, y: 20 }, 
+    { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
+  );
+}, []);
+```
+
+### Magnetic Button Effect
+```jsx
+const handleMouseMove = (e) => {
+  const { left, top, width, height } = e.target.getBoundingClientRect();
+  const x = (e.clientX - left - width / 2) / 3;
+  const y = (e.clientY - top - height / 2) / 3;
+  gsap.to(e.target, { x, y, duration: 0.3, ease: "power2.out" });
+};
+```
+
+## Red Flags to Avoid
+
+- **Overly Complex Animations**: Keep it simple and purposeful
+- **Inconsistent Easing**: Stick to the established easing curves
+- **Poor Timing**: Avoid animations that feel too slow (>1s) or too fast (<0.2s)
+- **Animation Spam**: Don't animate every single element independently
+- **Performance Issues**: Avoid animating expensive CSS properties
+- **Accessibility Concerns**: Respect `prefers-reduced-motion` when possible
+
+## Brand-Specific Guidelines
+
+- **Color Transitions**: Use green accent colors for interactive feedback
+- **Glassmorphism**: Animate backdrop blur and opacity changes smoothly
+- **Typography**: Ubuntu font should maintain consistency during text animations
+- **Spacing**: Maintain rhythm and breathing room in animated layouts
