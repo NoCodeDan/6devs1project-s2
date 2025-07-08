@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { handleSpotifyCallback } from '../services/spotifyService';
 import Card from './Card';
@@ -10,32 +10,42 @@ const SpotifyCallback = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Use a ref to ensure the callback logic only runs once
+  const hasRun = useRef(false);
+
   useEffect(() => {
+    // Only run the callback logic if it hasn't run before
+    if (hasRun.current) return;
+    hasRun.current = true;
+
     const handleCallback = async () => {
       try {
         const code = searchParams.get('code');
-        const error = searchParams.get('error');
+        const errorParam = searchParams.get('error');
+        const codeVerifier = searchParams.get('state'); // Read the verifier from the state
 
-        if (error) {
+        if (errorParam) {
           setError('Spotify authorization was cancelled or failed.');
           setLoading(false);
           return;
         }
 
-        if (!code) {
-          setError('No authorization code received from Spotify.');
+        if (!code || !codeVerifier) {
+          setError('Invalid callback received from Spotify. Code or verifier is missing.');
           setLoading(false);
           return;
         }
 
-        // Exchange code for tokens
-        await handleSpotifyCallback(code);
+        // Exchange code for tokens, passing the verifier directly
+        await handleSpotifyCallback(code, codeVerifier);
         
-        // Redirect to vibe setup
-        navigate('/vibe-setup', { replace: true });
+        // Redirect to onboarding form
+        navigate('/onboarding', { replace: true });
       } catch (err) {
         console.error('Error handling Spotify callback:', err);
-        setError('Failed to connect your Spotify account. Please try again.');
+        console.error('Error response:', err.response?.data);
+        console.error('Error status:', err.response?.status);
+        setError(`Failed to connect your Spotify account. ${err.response?.data?.error_description || 'Please try again.'}`);
         setLoading(false);
       }
     };

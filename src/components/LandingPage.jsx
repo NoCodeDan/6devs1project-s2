@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Card from './Card';
 import { initSpotifyAuth } from '../services/spotifyService';
+import OnboardingForm from './OnboardingForm';
 
 // Landing page sections
 import {
@@ -26,6 +27,8 @@ const LandingPage = () => {
   const [loading, setLoading] = useState(false);
   const [summary, setSummary] = useState('');
   const [demo, setDemo] = useState(false);
+  const [isInstagramLoading, setIsInstagramLoading] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
 
   // Refs for animations
   const containerRef = useRef(null);
@@ -179,6 +182,7 @@ const LandingPage = () => {
   }, [summary, demo]);
 
   const handleConnectSpotify = async () => {
+    console.log("✅ 'Connect Spotify' button clicked");
     setLoading(true);
     
     // Add button click animation
@@ -198,9 +202,9 @@ const LandingPage = () => {
     }
   };
 
-  const handleDemo = () => {
+  const handleInstagramLogin = async () => {
+    setIsInstagramLoading(true);
     setLoading(true);
-    setDemo(true);
     
     // Add button click animation
     gsap.to(buttonsRef.current?.children[1], {
@@ -211,16 +215,37 @@ const LandingPage = () => {
       ease: "power2.inOut"
     });
     
-    setTimeout(() => {
-      setSummary(mockSummary());
+    try {
+      // Simulate Instagram login API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log('Instagram login successful');
+      
+      // Show onboarding after successful Instagram login
+      setShowOnboarding(true);
       setLoading(false);
-    }, 1800);
+      setIsInstagramLoading(false);
+    } catch (error) {
+      console.error('Instagram login failed:', error);
+      setLoading(false);
+      setIsInstagramLoading(false);
+    }
+  };
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false);
+    console.log('Onboarding completed, redirect to main app');
+    // Here you would typically redirect to the main app or dashboard
   };
 
   const handleMusicToggle = (isMuted) => {
     // Music control is now handled directly in the MusicToggler component
     console.log('Music toggled:', isMuted ? 'muted' : 'unmuted');
   };
+
+  // Show onboarding form if user completed Instagram login
+  if (showOnboarding) {
+    return <OnboardingForm onComplete={handleOnboardingComplete} />;
+  }
 
   return (
     <div ref={containerRef} className="relative overflow-hidden">
@@ -254,7 +279,7 @@ const LandingPage = () => {
         ref={heroRef}
         loading={loading}
         onConnectSpotify={handleConnectSpotify}
-        onDemo={handleDemo}
+        onInstagramLogin={handleInstagramLogin}
         titleRef={titleRef}
         subtitleRef={subtitleRef}
         descriptionRef={descriptionRef}

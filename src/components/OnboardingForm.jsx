@@ -1,13 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { isAuthenticated, initSpotifyAuth } from '../services/spotifyService'
 import Button from './Button'
 
 export default function OnboardingForm({ onComplete }) {
+  const navigate = useNavigate()
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState({
     spotifyConnected: false,
     savedEvents: [],
     bookedEvents: []
   })
+
+  // Check if user is already authenticated with Spotify
+  useEffect(() => {
+    const checkSpotifyAuth = () => {
+      const authenticated = isAuthenticated()
+      setFormData(prev => ({ ...prev, spotifyConnected: authenticated }))
+      
+      // If user is authenticated and we're on the first step, move to next step
+      if (authenticated && currentStep === 0) {
+        setCurrentStep(1)
+      }
+    }
+    
+    checkSpotifyAuth()
+  }, [currentStep])
 
   const steps = [
     {
@@ -18,7 +36,7 @@ export default function OnboardingForm({ onComplete }) {
     {
       id: 'metrics',
       title: 'Your Music Profile',
-      subtitle: 'Here\'s what your listening habits reveal'
+      subtitle: 'Here\'s what your Spotify reveals'
     },
     {
       id: 'events',
@@ -79,9 +97,12 @@ export default function OnboardingForm({ onComplete }) {
   }
 
   const connectSpotify = () => {
-    // Mock Spotify connection
-    updateFormData('spotifyConnected', true)
-    setTimeout(() => nextStep(), 1500)
+    try {
+      // Initiate real Spotify OAuth flow
+      initSpotifyAuth()
+    } catch (error) {
+      console.error('Error initiating Spotify auth:', error)
+    }
   }
 
   const saveEvent = (eventId) => {
@@ -102,7 +123,12 @@ export default function OnboardingForm({ onComplete }) {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
-      onComplete?.()
+      // If onComplete prop is provided, use it, otherwise navigate to the new spotify page
+      if (onComplete) {
+        onComplete()
+      } else {
+        navigate('/spotify')
+      }
     }
   }
 
@@ -268,7 +294,7 @@ export default function OnboardingForm({ onComplete }) {
                 {formData.savedEvents.length > 0 && `${formData.savedEvents.length} events saved`}
               </p>
               <p className="text-body-small text-on-surface-variant">
-                Start exploring events that match your unique music taste
+                Start exploring events that match your unique music profile
               </p>
             </div>
           </div>

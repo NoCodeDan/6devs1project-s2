@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from './Card';
 import Button from './Button';
 
@@ -12,6 +13,7 @@ const steps = [
 ];
 
 const VibeSetup = ({ onComplete }) => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [selected, setSelected] = useState('');
@@ -29,7 +31,15 @@ const VibeSetup = ({ onComplete }) => {
     if (step < steps.length - 1) {
       setStep(step + 1);
     } else {
-      onComplete(newAnswers);
+      // Save answers to localStorage for now
+      localStorage.setItem('vibe_setup_answers', JSON.stringify(newAnswers));
+      
+      // If onComplete prop is provided, use it, otherwise navigate to personality summary
+      if (onComplete) {
+        onComplete(newAnswers);
+      } else {
+        navigate('/personality-summary');
+      }
     }
   };
 

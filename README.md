@@ -133,9 +133,34 @@ ngrok for redirect url, use 11labs voice for interactive experience
 
 ---
 
-### Dev #4 – [Name] – 07/05/2025
+### Dev #4 – [Mark] – 07/08/2025
 
-[Add your notes here]
++ Fixed errors from the Spotify OAuth connection flow, so users can now connect their accounts successfully. 
++ The app now redirects to the `/onboarding` page after connecting to Spotify
++ Added a `/ai` page that's able to query Gemini
++ Added a non-functional "Connect Instagram" button to the landing page (that you might want to remove)
+
+~ Discovered key limitations with third-party APIs:
+  - Instagram requires an app review process, I don't think the remaining devs will want to go through this process
+  - Eventbrite has deprecated its public event search API, so we probably can't connect to it to search for events
+
+⚠️ The `/spotify` data page is still encountering `403 Forbidden` errors. Check the console logs - the access token is being successfully created, but for some reason Spotify isn't being queried properly to get the information we need. The next developer needs to debug this issue.
+⚠️ The Ticketmaster account creation didn't work during my stream. The next developer should attempt to sign up again to see if we can connect to their API.
+
+**Steps for the next dev**:
+.env variables you'll need - VITE_SPOTIFY_CLIENT_ID, VITE_SPOTIFY_REDIRECT_URI, VITE_GEMINI_API_KEY
+
+1. First of all, I suggest setting up ngrok. You'll need to use its URL as a redirect URI for Spotify and put this in the .env file 
+2. Add your ngrok redirect URI to the allowedHosts in vite.config.js (mine was 7bfa69ddf234.ngrok-free.app, notice it's not ngrok-free.app/callback or ngrok-free.app/onboarding, it's just ngrok-free.app)
+2. Create a Spotify app - paste the ngrok url into there and copy its Client ID into the .env file. 
+3. Get a Gemini API key from https://aistudio.google.com/apikey and paste it into the .env file.
+4. Use npm run dev to run the project then go to http://localhost:5173/landing 
+5. You might want to remove the "Connect with Instagram" button since I don't think you'll want to go through the process of sending the app for review with Meta in order to be able to connect with instagram. 
+6. Click on "Connect Spotify" to connect your spotify account.
+7. Go to the http://localhost:5173/spotify page and fix the errors to properly retrieve the user's Spotify data
+8. Feed the results from that to the AI to get event recommendations. I've got Gemini setup at http://localhost:5173/ai as a reference but you can use OpenAI or anything else.
+9. Look into Evenbrite alternatives since we can't search events through Eventbrite's API. So maybe get Ticketmaster working, maybe use LinkedIn events or Meetup, so you can feed the AI's recommendations into this API's event search.
+10. We wouldn't actually direct users to the /spotify or /ai pages, this is just for testing to ensure their features are functional. After a user connects their Spotify account from the landing page, they should be redirected to /onboarding. So you'll have to modify this /onboarding page's sample info to display their actual retrieved info and event recommendations.
 
 ---
 
