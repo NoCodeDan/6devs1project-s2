@@ -166,7 +166,23 @@ ngrok for redirect url, use 11labs voice for interactive experience
 
 ### Dev #5 – [Name] – 07/06/2025
 
-[Add your notes here]
+Okay - didn't get far. 
+
+Wins - 
+1) Fixed Spotify auth issue. So that should work now as long as you update ngrok.
+2) Pulling Spotify data into /spotify page and all is accurate.
+3) Updated onboarding spotify data pull which is now accurate.
+
+To Do - 
+
+1) I think you'll need to update the ngrok again for spotify and ticketmaster. 
+2) Get real Gemini key to process and analyze Spotify data.
+3) Set up a ticketmaster app and API key.
+4) Make API request to Ticketmaster API to update venue, date, artist, url, etc and display on dashboard.
+
+
+
+
 
 ---
 
