@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { isAuthenticated, initSpotifyAuth, getUserSpotifyData } from '../services/spotifyService'
+import { searchTicketmasterEvents } from '../services/ticketmasterService'
 import Button from './Button'
 
 export default function OnboardingForm({ onComplete }) {
@@ -14,6 +15,9 @@ export default function OnboardingForm({ onComplete }) {
   const [loadingSpotifyData, setLoadingSpotifyData] = useState(false)
   const [spotifyData, setSpotifyData] = useState(null)
   const [metrics, setMetrics] = useState(null)
+  const [ticketmasterEvents, setTicketmasterEvents] = useState([])
+  const [loadingEvents, setLoadingEvents] = useState(false)
+  const [eventsError, setEventsError] = useState(null)
 
   // Check if user is already authenticated with Spotify and fetch real data
   useEffect(() => {
@@ -48,6 +52,27 @@ export default function OnboardingForm({ onComplete }) {
     }
     checkSpotifyAuth()
   }, [currentStep])
+
+  // Fetch Ticketmaster events when entering the 'events' step and have metrics
+  useEffect(() => {
+    if (steps[currentStep].id === 'events' && metrics && ticketmasterEvents.length === 0 && !loadingEvents) {
+      const fetchEvents = async () => {
+        setLoadingEvents(true)
+        setEventsError(null)
+        try {
+          // Use top genre or artist as query
+          const query = metrics.topGenres[0] || metrics.topArtists[0] || 'music'
+          const events = await searchTicketmasterEvents(query)
+          setTicketmasterEvents(events)
+        } catch (err) {
+          setEventsError('Failed to load events. Please try again later.')
+        }
+        setLoadingEvents(false)
+      }
+      fetchEvents()
+    }
+    // eslint-disable-next-line
+  }, [currentStep, metrics])
 
   const steps = [
     {
@@ -249,45 +274,60 @@ export default function OnboardingForm({ onComplete }) {
         )
 
       case 'events':
+        if (loadingEvents) {
+          return <div className="text-center py-12">Loading events...</div>
+        }
+        if (eventsError) {
+          return <div className="text-center py-12 text-error">{eventsError}</div>
+        }
+        if (ticketmasterEvents.length === 0) {
+          return <div className="text-center py-12 text-on-surface-variant">No events found for your music taste. Try again later!</div>
+        }
         return (
           <div className="space-y-6">
-            {mockEvents.map((event) => (
+            {ticketmasterEvents.map((event) => (
               <div key={event.id} className="bg-surface-container-low rounded-xl p-6 border border-outline-variant space-y-4">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <h3 className="text-title-medium text-on-surface">{event.name}</h3>
-                      <span className="px-2 py-1 bg-primary text-on-primary rounded-full text-label-small">
-                        {event.match}% match
-                      </span>
-                    </div>
-                    <p className="text-body-small text-on-surface-variant mb-1">{event.date}</p>
-                    <p className="text-body-small text-on-surface-variant mb-3">{event.location}</p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {event.artists.slice(0, 3).map((artist) => (
-                        <span key={artist} className="text-label-small text-secondary">
-                          {artist}
+                      {event.dates?.start?.localDate && (
+                        <span className="px-2 py-1 bg-primary text-on-primary rounded-full text-label-small">
+                          {new Date(event.dates.start.localDate).toLocaleDateString()}
                         </span>
-                      ))}
+                      )}
                     </div>
-                    <p className="text-title-small text-on-surface">{event.price}</p>
+                    <p className="text-body-small text-on-surface-variant mb-1">{event._embedded?.venues?.[0]?.name}</p>
+                    <p className="text-body-small text-on-surface-variant mb-3">{event._embedded?.venues?.[0]?.city?.name}, {event._embedded?.venues?.[0]?.country?.name}</p>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {event.classifications?.[0]?.genre?.name && (
+                        <span className="text-label-small text-secondary">
+                          {event.classifications[0].genre.name}
+                        </span>
+                      )}
+                    </div>
+                    {event.priceRanges && event.priceRanges[0] && (
+                      <p className="text-title-small text-on-surface">
+                        {event.priceRanges[0].min} - {event.priceRanges[0].max} {event.priceRanges[0].currency}
+                      </p>
+                    )}
                   </div>
                 </div>
-                                 <div className="flex gap-3">
-                   <Button
-                     variant={formData.bookedEvents.includes(event.id) ? 'success' : 'glow'}
-                     onClick={() => bookEvent(event.id)}
-                     className="flex-1"
-                   >
-                     {formData.bookedEvents.includes(event.id) ? 'Booked!' : 'Book Now'}
-                   </Button>
-                   <Button
-                     variant={formData.savedEvents.includes(event.id) ? 'primary' : 'ghost'}
-                     onClick={() => saveEvent(event.id)}
-                   >
-                     {formData.savedEvents.includes(event.id) ? 'Saved' : 'Save'}
-                   </Button>
-                 </div>
+                <div className="flex gap-3">
+                  <Button
+                    variant={formData.bookedEvents.includes(event.id) ? 'success' : 'glow'}
+                    onClick={() => bookEvent(event.id)}
+                    className="flex-1"
+                  >
+                    {formData.bookedEvents.includes(event.id) ? 'Booked!' : 'Book Now'}
+                  </Button>
+                  <Button
+                    variant={formData.savedEvents.includes(event.id) ? 'primary' : 'ghost'}
+                    onClick={() => saveEvent(event.id)}
+                  >
+                    {formData.savedEvents.includes(event.id) ? 'Saved' : 'Save'}
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
