@@ -27,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/callback" element={<SpotifyCallback />} />
+            <Route path="/spotify/callback" element={<SpotifyCallback />} />
             <Route path="/onboarding" element={<OnboardingForm />} />
             <Route path="/vibe-setup" element={<VibeSetup />} />
             <Route path="/eventbrite" element={<Eventbrite />} />
