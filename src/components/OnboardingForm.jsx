@@ -11,7 +11,10 @@ export default function OnboardingForm({ onComplete }) {
   const [formData, setFormData] = useState({
     spotifyConnected: false,
     savedEvents: [],
-    bookedEvents: []
+    bookedEvents: [],
+    music_preferences: '',
+    event_preferences: '',
+    city: ''
   })
   const [loadingSpotifyData, setLoadingSpotifyData] = useState(false)
   const [spotifyData, setSpotifyData] = useState(null)
@@ -80,6 +83,40 @@ export default function OnboardingForm({ onComplete }) {
       id: 'spotify',
       title: 'Connect Your Spotify',
       subtitle: 'Let us analyze your music taste to find perfect events'
+    },
+    {
+      id: 'music_preferences',
+      title: 'What type of music do you like?',
+      subtitle: 'Select your favorite genre',
+      options: [
+        'Rap/Hip Hop',
+        'Pop',
+        'Rock',
+        'Electronic',
+        'Indie',
+        'Country',
+        'Jazz',
+        'Classical',
+        'Other'
+      ]
+    },
+    {
+      id: 'event_preferences',
+      title: 'What type of events do you like?',
+      subtitle: 'Select your favorite event type',
+      options: [
+        'Concerts',
+        'Festivals',
+        'Club Nights',
+        'Open Mics',
+        'Workshops',
+        'Other'
+      ]
+    },
+    {
+      id: 'city',
+      title: 'What city are you from?',
+      subtitle: 'Enter your city',
     },
     {
       id: 'metrics',
@@ -179,7 +216,10 @@ export default function OnboardingForm({ onComplete }) {
         listening_hours: listeningHours,
         discovery_score: discoveryScore,
         danceability,
-        energy
+        energy,
+        music_preferences: formData.music_preferences,
+        event_preferences: formData.event_preferences,
+        city: formData.city
       }
     ]);
     if (error) {
@@ -244,6 +284,52 @@ export default function OnboardingForm({ onComplete }) {
           </div>
         )
 
+      case 'music_preferences':
+        return (
+          <div className="space-y-6">
+            <div className="grid grid-cols-2 gap-3">
+              {step.options.map(option => (
+                <Button
+                  key={option}
+                  variant={formData.music_preferences === option ? 'primary' : 'ghost'}
+                  onClick={() => updateFormData('music_preferences', option)}
+                  className="w-full"
+                >
+                  {option}
+                </Button>
+              ))}
+            </div>
+          </div>
+        )
+      case 'event_preferences':
+        return (
+          <div className="space-y-6">
+            <div className="grid grid-cols-2 gap-3">
+              {step.options.map(option => (
+                <Button
+                  key={option}
+                  variant={formData.event_preferences === option ? 'primary' : 'ghost'}
+                  onClick={() => updateFormData('event_preferences', option)}
+                  className="w-full"
+                >
+                  {option}
+                </Button>
+              ))}
+            </div>
+          </div>
+        )
+      case 'city':
+        return (
+          <div className="space-y-6">
+            <input
+              type="text"
+              className="w-full p-3 border border-outline-variant rounded-lg text-body-large"
+              placeholder="Enter your city"
+              value={formData.city}
+              onChange={e => updateFormData('city', e.target.value)}
+            />
+          </div>
+        )
       case 'metrics':
         if (loadingSpotifyData) {
           return <div className="text-center py-12">Loading your Spotify analytics...</div>
@@ -386,6 +472,12 @@ export default function OnboardingForm({ onComplete }) {
     switch (steps[currentStep].id) {
       case 'spotify':
         return formData.spotifyConnected
+      case 'music_preferences':
+        return !!formData.music_preferences
+      case 'event_preferences':
+        return !!formData.event_preferences
+      case 'city':
+        return !!formData.city
       default:
         return true
     }
