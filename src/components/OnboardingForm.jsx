@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { isAuthenticated, initSpotifyAuth, getUserSpotifyData } from '../services/spotifyService'
 import { searchTicketmasterEvents } from '../services/ticketmasterService'
 import Button from './Button'
+import { supabase } from '../services/supabaseClient'
 
 export default function OnboardingForm({ onComplete }) {
   const navigate = useNavigate()
@@ -166,11 +167,31 @@ export default function OnboardingForm({ onComplete }) {
     updateFormData('bookedEvents', bookedEvents)
   }
 
-  const nextStep = () => {
+  const saveOnboardingResults = async () => {
+    if (!metrics) return;
+    const { topGenres, topArtists, listeningHours, discoveryScore, danceability, energy } = metrics;
+    const user_id = spotifyData?.profile?.id || null;
+    const { error } = await supabase.from('onboarding_results').insert([
+      {
+        user_id,
+        top_genres: topGenres,
+        top_artists: topArtists,
+        listening_hours: listeningHours,
+        discovery_score: discoveryScore,
+        danceability,
+        energy
+      }
+    ]);
+    if (error) {
+      console.error('Error saving onboarding results:', error.message);
+    }
+  }
+
+  const nextStep = async () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
-      // If onComplete prop is provided, use it, otherwise navigate to the new spotify page
+      await saveOnboardingResults();
       if (onComplete) {
         onComplete()
       } else {
