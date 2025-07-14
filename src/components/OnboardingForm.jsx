@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { isAuthenticated, initSpotifyAuth } from '../services/spotifyService'
+import { isAuthenticated, initSpotifyAuth, getUserSpotifyData } from '../services/spotifyService'
 import Button from './Button'
 
 export default function OnboardingForm({ onComplete }) {
@@ -11,19 +11,41 @@ export default function OnboardingForm({ onComplete }) {
     savedEvents: [],
     bookedEvents: []
   })
+  const [loadingSpotifyData, setLoadingSpotifyData] = useState(false)
+  const [spotifyData, setSpotifyData] = useState(null)
+  const [metrics, setMetrics] = useState(null)
 
-  // Check if user is already authenticated with Spotify
+  // Check if user is already authenticated with Spotify and fetch real data
   useEffect(() => {
-    const checkSpotifyAuth = () => {
+    const checkSpotifyAuth = async () => {
       const authenticated = isAuthenticated()
       setFormData(prev => ({ ...prev, spotifyConnected: authenticated }))
-      
-      // If user is authenticated and we're on the first step, move to next step
       if (authenticated && currentStep === 0) {
+        setLoadingSpotifyData(true)
+        try {
+          const data = await getUserSpotifyData()
+          setSpotifyData(data)
+          // Calculate metrics from real data
+          const topGenres = Array.from(new Set(
+            data.topArtists.items.flatMap(artist => artist.genres)
+          )).slice(0, 3)
+          const topArtists = data.topArtists.items.slice(0, 5).map(a => a.name)
+          // Example: listening hours, discovery score, etc. (mocked for now)
+          setMetrics({
+            topGenres,
+            topArtists,
+            listeningHours: 0, // You can estimate from recentlyPlayed if desired
+            discoveryScore: 0, // Placeholder
+            danceability: 0,   // Placeholder
+            energy: 0         // Placeholder
+          })
+        } catch (err) {
+          setSpotifyData(null)
+        }
+        setLoadingSpotifyData(false)
         setCurrentStep(1)
       }
     }
-    
     checkSpotifyAuth()
   }, [currentStep])
 
@@ -177,17 +199,23 @@ export default function OnboardingForm({ onComplete }) {
         )
 
       case 'metrics':
+        if (loadingSpotifyData) {
+          return <div className="text-center py-12">Loading your Spotify analytics...</div>
+        }
+        if (!metrics) {
+          return <div className="text-center py-12 text-error">Failed to load Spotify data.</div>
+        }
         return (
           <div className="space-y-8">
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-surface-container-low rounded-xl p-6 border border-outline-variant">
                 <h3 className="text-title-small text-on-surface mb-2">Listening Hours</h3>
-                <p className="text-headline-small text-primary">{mockMetrics.listeningHours}</p>
+                <p className="text-headline-small text-primary">{metrics.listeningHours}</p>
                 <p className="text-body-small text-on-surface-variant">This year</p>
               </div>
               <div className="bg-surface-container-low rounded-xl p-6 border border-outline-variant">
                 <h3 className="text-title-small text-on-surface mb-2">Discovery Score</h3>
-                <p className="text-headline-small text-secondary">{mockMetrics.discoveryScore}%</p>
+                <p className="text-headline-small text-secondary">{metrics.discoveryScore}%</p>
                 <p className="text-body-small text-on-surface-variant">Above average</p>
               </div>
             </div>
@@ -195,7 +223,7 @@ export default function OnboardingForm({ onComplete }) {
             <div className="bg-surface-container-low rounded-xl p-6 border border-outline-variant space-y-4">
               <h3 className="text-title-medium text-on-surface">Top Genres</h3>
               <div className="flex flex-wrap gap-2">
-                {mockMetrics.topGenres.map((genre, index) => (
+                {metrics.topGenres.map((genre, index) => (
                   <span key={genre} className={`px-3 py-1 rounded-full text-label-small ${
                     index === 0 ? 'bg-primary text-on-primary' :
                     index === 1 ? 'bg-secondary text-on-secondary' :
@@ -209,24 +237,12 @@ export default function OnboardingForm({ onComplete }) {
 
             <div className="bg-surface-container-low rounded-xl p-6 border border-outline-variant space-y-4">
               <h3 className="text-title-medium text-on-surface">Top Artists</h3>
-              <div className="space-y-2">
-                {mockMetrics.topArtists.slice(0, 3).map((artist, index) => (
-                  <div key={artist} className="flex items-center gap-3">
-                    <span className="text-label-large text-primary">#{index + 1}</span>
-                    <span className="text-body-medium text-on-surface">{artist}</span>
-                  </div>
+              <div className="flex flex-wrap gap-2">
+                {metrics.topArtists.map((artist, index) => (
+                  <span key={artist} className="px-3 py-1 rounded-full bg-surface-variant text-label-small">
+                    {artist}
+                  </span>
                 ))}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-surface-container-low rounded-xl p-4 border border-outline-variant text-center">
-                <p className="text-body-small text-on-surface-variant mb-1">Danceability</p>
-                <p className="text-title-large text-primary">{mockMetrics.danceability}%</p>
-              </div>
-              <div className="bg-surface-container-low rounded-xl p-4 border border-outline-variant text-center">
-                <p className="text-body-small text-on-surface-variant mb-1">Energy</p>
-                <p className="text-title-large text-secondary">{mockMetrics.energy}%</p>
               </div>
             </div>
           </div>
