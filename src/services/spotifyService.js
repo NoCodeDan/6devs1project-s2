@@ -280,7 +280,19 @@ export const getUserSpotifyData = async () => {
 
     // Get audio features for top tracks
     const trackIds = topTracks.items.map(track => track.id);
-    const audioFeatures = await getTrackAudioFeatures(trackIds);
+    let audioFeatures = null;
+    if (trackIds.length > 0) {
+      try {
+        audioFeatures = await getTrackAudioFeatures(trackIds);
+      } catch (error) {
+        if (error.response && error.response.status === 403) {
+          // Token is invalid or missing scopes, force logout
+          logout();
+          throw new Error('Spotify authentication expired or missing permissions. Please reconnect your account.');
+        }
+        throw error;
+      }
+    }
 
     return {
       profile,
@@ -291,6 +303,10 @@ export const getUserSpotifyData = async () => {
       audioFeatures
     };
   } catch (error) {
+    if (error.response && error.response.status === 403) {
+      logout();
+      throw new Error('Spotify authentication expired or missing permissions. Please reconnect your account.');
+    }
     console.error('Error fetching comprehensive user data:', error);
     throw error;
   }
